@@ -539,7 +539,7 @@ def parse(path, module_name=None, include_dirs=None, include_dir=None,
     if url_scheme == 'file':
         with open(urlparse(path).netloc + urlparse(path).path) as fh:
             data = fh.read()
-    elif url_scheme == '':
+    elif url_scheme == '' or os.path.exists(path):
         with open(path) as fh:
             data = fh.read()
     elif url_scheme in ('http', 'https'):
